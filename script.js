@@ -31,6 +31,8 @@ square.forEach((elem) => {
       });
 });
 
+//-------------------Computer Turn-----------------------
+
 function computerTurn() {
       let emptySquare = allSqure.filter((elem) => !elem.textContent);
       let randCompTurn = Math.floor(Math.random() * emptySquare.length);
@@ -40,6 +42,23 @@ function computerTurn() {
       }
 }
 
+console.log(square);
+
+// -------------------------------JS For Select level ----------------------------------------
+
+const lvlSelect = document.querySelectorAll(".lvl")
+lvlSelect.forEach((elem)=>{
+      elem.addEventListener("click",()=>{
+            if(lvlSelect.id==1){
+                  console.log("hey")
+
+            }
+                  })
+})
+
+
+
+//-------------------------------------Winner-----------------------------------------
 function checkWinner() {
       if (
             box1.textContent === "X" &&
@@ -155,17 +174,3 @@ function checkWinner() {
             gameStillOn = false;
       }
 }
-
-console.log(square);
-
-// -------------------------------JS For popup ----------------------------------------
-
-const popup = document.querySelectorAll(".lvl")
-popup.forEach((elem)=>{
-      elem.addEventListener("click",()=>{
-            
-      })
-})
-
-
-
