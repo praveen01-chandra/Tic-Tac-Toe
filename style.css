@@ -65,6 +65,7 @@ body {
         justify-content: center;
         align-items: center;
         margin: 10px;
+        cursor: grab;
 }
 
 .createpopup{
@@ -74,4 +75,18 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;background-color: rgba(215, 104, 104, 0.5);
+}
+
+
+.resetgame{
+        height: 40px;
+        width: 200px;
+        border: black 2px solid;
+        background-color: black;
+        font-size: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        text-align: center;
+        color: gold;
+        padding-top: 7px;
 }

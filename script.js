@@ -9,27 +9,29 @@ const box8 = document.getElementById("8");
 const box9 = document.getElementById("9");
 const square = document.querySelectorAll(".square");
 const allSqure = [box1, box2, box3, box4, box5, box6, box7, box8, box9];
-let declareWinner = document.getElementById("Winner")
+let declareWinner = document.getElementById("Winner");
 let playerText = "X";
 let gameStillOn = true;
 let winner = "";
-let level = 0
+let level = 0;
 
-//get id of the block user clicks
-square.forEach((elem) => {
-      elem.addEventListener("click", () => {
-            if (gameStillOn === true) {
-                  if (!elem.textContent) {
-                        elem.textContent = playerText;
-                        checkWinner();
-                        if (gameStillOn) {
-                              computerTurn();
+//---------------------------     -------------------------------------------//
+function decideTurn() {
+      square.forEach((elem) => {
+            elem.addEventListener("click", () => {
+                  if (gameStillOn === true) {
+                        if (!elem.textContent) {
+                              elem.textContent = playerText;
+                              checkWinner();
+                              if (gameStillOn) {
+                                    computerTurn();
+                              }
                         }
                   }
-            }
-            declareWinner.innerText = `${winner}`
+                  declareWinner.innerText = `${winner}`;
+            });
       });
-});
+}
 
 //-------------------Computer Turn-----------------------
 
@@ -42,23 +44,44 @@ function computerTurn() {
       }
 }
 
-console.log(square);
-
 // -------------------------------JS For Select level ----------------------------------------
 
-const lvlSelect = document.querySelectorAll(".lvl")
-lvlSelect.forEach((elem)=>{
-      elem.addEventListener("click",()=>{
-            if(lvlSelect.id==1){
-                  console.log("hey")
+const lvlSelect = document.querySelectorAll(".lvl");
+const closePopup = document.getElementsByClassName("createpopup")[0];
 
+lvlSelect.forEach((elem) => {
+      elem.addEventListener("click", () => {
+            if (elem.id === "Easy") {
+                  closePopup.style.display = "none";
+                  decideTurn();
+            } else if (elem.id === "Medium") {
+                  closePopup.style.display = "none";
+                  decideTurn();
+            } else if (elem.id === "Hard") {
+                  closePopup.style.display = "none";
+                  decideTurn();
             }
-                  })
+      });
+});
+
+// function levelOne() {
+//       decideTurn()
+// }
+
+//-------------------------------------Reset-----------------------------------------//
+let resetGame = document.querySelector(".resetgame");
+resetGame.addEventListener("click", resetGame=()=>{
+      playerText = "X";
+      gameStillOn = true;
+      winner = "";
+      square.forEach((elem) => {
+            elem.textContent = "";
+            closePopup.style.display = "flex";
+      });
 })
-
-
-
 //-------------------------------------Winner-----------------------------------------
+
+
 function checkWinner() {
       if (
             box1.textContent === "X" &&
