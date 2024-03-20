@@ -14,9 +14,106 @@ let playerText = "X";
 let gameStillOn = true;
 let winner = "";
 let level = 0;
+let playerClick = 0;
+//-------------------Computer Turn Easy-----------------------
 
-//---------------------------     -------------------------------------------//
-function decideTurn() {
+function computerTurn() {
+      let emptySquare = allSqure.filter((elem) => !elem.textContent);
+      let randCompTurn = Math.floor(Math.random() * emptySquare.length);
+      if (emptySquare.length > 0) {
+            emptySquare[randCompTurn].textContent = "O";
+            checkWinner();
+      }
+}
+
+//-------------------Computer Turn Medium-----------------------
+
+function computerTurnMedium() {
+      const emptySquare = allSqure.filter((elem) => !elem.textContent);
+      const emptySquareId = allSqure
+            .filter((elem) => !elem.textContent)
+            .map((elem) => parseInt(elem.id));
+      let cornerMove = [1, 3, 7, 9];
+      let middleMove = [2, 4, 6, 8];
+
+      //---------------------------------first Move Login-----------------------------------------
+
+      let cornerMoveSuffle = cornerMove.filter((move) =>
+            emptySquareId.includes(move)
+      );
+      let cornerTurn = Math.floor(Math.random() * cornerMoveSuffle.length);
+      let middleMoveSuffle = middleMove.filter((e) =>
+            emptySquareId.includes(e)
+      );
+      let middleTurn = Math.floor(Math.random() * middleMoveSuffle.length);
+
+      function middleBox() {
+            const cornerId = document.getElementById(
+                  middleMoveSuffle[middleTurn]
+            );
+            cornerId.textContent = "O";
+      }
+
+      function cornerBox() {
+            const middleId = document.getElementById(
+                  cornerMoveSuffle[cornerTurn]
+            );
+            middleId.textContent = "O";
+      }
+
+      if (emptySquare.length >= 8) {
+            if (cornerMove.includes(Number(playerClick))) {
+                  if (box5.textContent === "") {
+                        box5.textContent = "O";
+                  } else {
+                        middleBox();
+                  }
+            } else if (middleMove.includes(Number(playerClick))) {
+                  cornerBox();
+            } else {
+                  box5.textContent = "O";
+            }
+      }
+      if (emptySquare.length > 0 && emptySquare.length < 8) {
+            if (cornerMove.includes(Number(playerClick))) {
+                  if (box5.textContent === "") {
+                        box5.textContent = "O";
+                  } else {
+                        middleBox();
+                        checkWinner();
+                  }
+            } else if (middleMove.includes(Number(playerClick))) {
+                  cornerBox();
+                  checkWinner();
+            } else {
+                  cornerBox()
+                  checkWinner();
+            }
+      }
+}
+
+// -------------------------------JS For Select level ----------------------------------------
+
+const lvlSelect = document.querySelectorAll(".lvl");
+const closePopup = document.getElementsByClassName("createpopup")[0];
+
+lvlSelect.forEach((elem) => {
+      elem.addEventListener("click", () => {
+            if (elem.id === "Easy") {
+                  closePopup.style.display = "none";
+                  levelOne();
+            } else if (elem.id === "Medium") {
+                  closePopup.style.display = "none";
+                  levelOne();
+            } else if (elem.id === "Hard") {
+                  closePopup.style.display = "none";
+                  levelThree();
+            }
+      });
+});
+
+//---------------------------------Easy Level------------------------------------------------//
+function levelOne() {
       square.forEach((elem) => {
             elem.addEventListener("click", () => {
                   if (gameStillOn === true) {
@@ -33,54 +130,42 @@ function decideTurn() {
       });
 }
 
-//-------------------Computer Turn-----------------------
+//----------------------------------Medium level----------------------------------------------
+function levelTwo() {}
 
-function computerTurn() {
-      let emptySquare = allSqure.filter((elem) => !elem.textContent);
-      let randCompTurn = Math.floor(Math.random() * emptySquare.length);
-      if (emptySquare.length > 0) {
-            emptySquare[randCompTurn].textContent = "O";
-            checkWinner();
-      }
-}
-
-// -------------------------------JS For Select level ----------------------------------------
-
-const lvlSelect = document.querySelectorAll(".lvl");
-const closePopup = document.getElementsByClassName("createpopup")[0];
-
-lvlSelect.forEach((elem) => {
-      elem.addEventListener("click", () => {
-            if (elem.id === "Easy") {
-                  closePopup.style.display = "none";
-                  decideTurn();
-            } else if (elem.id === "Medium") {
-                  closePopup.style.display = "none";
-                  decideTurn();
-            } else if (elem.id === "Hard") {
-                  closePopup.style.display = "none";
-                  decideTurn();
-            }
+//----------------------------------Hard Level------------------------------------------------
+function levelThree() {
+      square.forEach((elem) => {
+            elem.addEventListener("click", () => {
+                  if (gameStillOn === true) {
+                        if (!elem.textContent) {
+                              elem.textContent = playerText;
+                              playerClick = elem.id;
+                              checkWinner();
+                              if (gameStillOn) {
+                                    computerTurnMedium();
+                              }
+                        }
+                  }
+                  declareWinner.innerText = `${winner}`;
+            });
       });
-});
-
-// function levelOne() {
-//       decideTurn()
-// }
+}
 
 //-------------------------------------Reset-----------------------------------------//
 let resetGame = document.querySelector(".resetgame");
-resetGame.addEventListener("click", resetGame=()=>{
-      playerText = "X";
-      gameStillOn = true;
-      winner = "";
-      square.forEach((elem) => {
-            elem.textContent = "";
-            closePopup.style.display = "flex";
-      });
-})
+resetGame.addEventListener(
+      "click",
+      (resetGame = () => {
+            playerText = "X";
+            gameStillOn = true;
+            winner = "";
+            square.forEach((elem) => {
+                  elem.textContent = "";
+            });
+      })
+);
 //-------------------------------------Winner-----------------------------------------
-
 
 function checkWinner() {
       if (
