@@ -15,6 +15,12 @@ let gameStillOn = true;
 let winner = "";
 let level = 0;
 let playerClick = 0;
+
+let gameBoard = [
+            ["", "", ""],
+            ["", "", ""],
+            ["", "", ""]
+      ];
 //-------------------Computer Turn Easy-----------------------
 
 function computerTurn() {
@@ -47,6 +53,7 @@ function computerTurnMedium() {
       );
       let middleTurn = Math.floor(Math.random() * middleMoveSuffle.length);
 
+      //------------------------------------------------------
       function middleBox() {
             const cornerId = document.getElementById(
                   middleMoveSuffle[middleTurn]
@@ -61,6 +68,12 @@ function computerTurnMedium() {
             middleId.textContent = "O";
       }
 
+      let playerChosenBox = "";
+      //---------------------------------First Move-------------------------------------
+
+      
+      console.log(gameBoard)
+
       if (emptySquare.length >= 8) {
             if (cornerMove.includes(Number(playerClick))) {
                   if (box5.textContent === "") {
@@ -69,11 +82,19 @@ function computerTurnMedium() {
                         middleBox();
                   }
             } else if (middleMove.includes(Number(playerClick))) {
-                  cornerBox();
+                  if (box5.textContent === "") {
+                        box5.textContent = "O";
+                  } else {
+                        cornerBox();
+                  }
             } else {
-                  box5.textContent = "O";
+                  cornerBox();
             }
+            playerChosenBox = playerClick;
       }
+      console.log(playerChosenBox);
+
+      //---------------------------------Second Move-------------------------------------
       if (emptySquare.length > 0 && emptySquare.length < 8) {
             if (cornerMove.includes(Number(playerClick))) {
                   if (box5.textContent === "") {
@@ -86,7 +107,7 @@ function computerTurnMedium() {
                   cornerBox();
                   checkWinner();
             } else {
-                  cornerBox()
+                  cornerBox();
                   checkWinner();
             }
       }
@@ -104,10 +125,10 @@ lvlSelect.forEach((elem) => {
                   levelOne();
             } else if (elem.id === "Medium") {
                   closePopup.style.display = "none";
-                  levelOne();
+                  levelTwo();
             } else if (elem.id === "Hard") {
                   closePopup.style.display = "none";
-                  levelThree();
+                  levelTwo();
             }
       });
 });
@@ -131,10 +152,7 @@ function levelOne() {
 }
 
 //----------------------------------Medium level----------------------------------------------
-function levelTwo() {}
-
-//----------------------------------Hard Level------------------------------------------------
-function levelThree() {
+function levelTwo() {
       square.forEach((elem) => {
             elem.addEventListener("click", () => {
                   if (gameStillOn === true) {
@@ -152,6 +170,25 @@ function levelThree() {
       });
 }
 
+//----------------------------------Hard Level------------------------------------------------
+// function levelThree() {
+//       square.forEach((elem) => {
+//             elem.addEventListener("click", () => {
+//                   if (gameStillOn === true) {
+//                         if (!elem.textContent) {
+//                               elem.textContent = playerText;
+//                               playerClick = elem.id;
+//                               checkWinner();
+//                               if (gameStillOn) {
+//                                     computerTurnMedium();
+//                               }
+//                         }
+//                   }
+//                   declareWinner.innerText = `${winner}`;
+//             });
+//       });
+// }
+
 //-------------------------------------Reset-----------------------------------------//
 let resetGame = document.querySelector(".resetgame");
 resetGame.addEventListener(
@@ -165,9 +202,30 @@ resetGame.addEventListener(
             });
       })
 );
+
+//-----------------round compleate------------------
+
+function roundRestart(){
+      square.forEach((elem) => {
+            elem.textContent = "";
+      });
+      playerText = "X";
+            gameStillOn = true;
+            winner = "";
+}
+
 //-------------------------------------Winner-----------------------------------------
 
+let playerScore = document.getElementById("playerScore")
+let computerScore = document.getElementById("computerScore")
+let tieScore = document.getElementById("tieScore")
+
+playerScores = 0
+computerScores = 0
+tieScores = 0
+
 function checkWinner() {
+      let emptySquare = allSqure.filter((elem) => !elem.textContent)
       if (
             box1.textContent === "X" &&
             box2.textContent === "X" &&
@@ -175,6 +233,10 @@ function checkWinner() {
       ) {
             winner = "Player Wins!";
             gameStillOn = false;
+            playerScores+=1
+            playerScore.innerText = playerScores
+            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,1000)
       } else if (
             box4.textContent === "X" &&
             box5.textContent === "X" &&
@@ -182,6 +244,9 @@ function checkWinner() {
       ) {
             winner = "Player Wins!";
             gameStillOn = false;
+            playerScores+=1
+            playerScore.innerText = playerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box7.textContent === "X" &&
             box8.textContent === "X" &&
@@ -189,6 +254,9 @@ function checkWinner() {
       ) {
             winner = "Player Wins!";
             gameStillOn = false;
+            playerScores+=1
+            playerScore.innerText = playerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box1.textContent === "X" &&
             box4.textContent === "X" &&
@@ -196,6 +264,9 @@ function checkWinner() {
       ) {
             winner = "Player Wins!";
             gameStillOn = false;
+            playerScores+=1
+            playerScore.innerText = playerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box2.textContent === "X" &&
             box5.textContent === "X" &&
@@ -203,6 +274,9 @@ function checkWinner() {
       ) {
             winner = "Player Wins!";
             gameStillOn = false;
+            playerScores+=1
+            playerScore.innerText = playerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box3.textContent === "X" &&
             box6.textContent === "X" &&
@@ -210,6 +284,9 @@ function checkWinner() {
       ) {
             winner = "Player Wins!";
             gameStillOn = false;
+            playerScores+=1
+            playerScore.innerText = playerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box1.textContent === "X" &&
             box5.textContent === "X" &&
@@ -217,6 +294,9 @@ function checkWinner() {
       ) {
             winner = "Player Wins!";
             gameStillOn = false;
+            playerScores+=1
+            playerScore.innerText = playerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box3.textContent === "X" &&
             box5.textContent === "X" &&
@@ -224,6 +304,9 @@ function checkWinner() {
       ) {
             winner = "Player Wins!";
             gameStillOn = false;
+            playerScores+=1
+            playerScore.innerText = playerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box1.textContent === "O" &&
             box2.textContent === "O" &&
@@ -231,6 +314,9 @@ function checkWinner() {
       ) {
             winner = "Computer Wins!";
             gameStillOn = false;
+            computerScores+=1
+            computerScore.innerText = computerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box4.textContent === "O" &&
             box5.textContent === "O" &&
@@ -238,6 +324,9 @@ function checkWinner() {
       ) {
             winner = "Computer Wins!";
             gameStillOn = false;
+            computerScores+=1
+            computerScore.innerText = computerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box7.textContent === "O" &&
             box8.textContent === "O" &&
@@ -245,6 +334,9 @@ function checkWinner() {
       ) {
             winner = "Computer Wins!";
             gameStillOn = false;
+            computerScores+=1
+            computerScore.innerText = computerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box1.textContent === "O" &&
             box4.textContent === "O" &&
@@ -252,6 +344,9 @@ function checkWinner() {
       ) {
             winner = "Computer Wins!";
             gameStillOn = false;
+            computerScores+=1
+            computerScore.innerText = computerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box2.textContent === "O" &&
             box5.textContent === "O" &&
@@ -259,6 +354,9 @@ function checkWinner() {
       ) {
             winner = "Computer Wins!";
             gameStillOn = false;
+            computerScores+=1
+            computerScore.innerText = computerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box3.textContent === "O" &&
             box6.textContent === "O" &&
@@ -266,6 +364,9 @@ function checkWinner() {
       ) {
             winner = "Computer Wins!";
             gameStillOn = false;
+            computerScores+=1
+            computerScore.innerText = computerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box1.textContent === "O" &&
             box5.textContent === "O" &&
@@ -273,6 +374,9 @@ function checkWinner() {
       ) {
             winner = "Computer Wins!";
             gameStillOn = false;
+            computerScores+=1
+            computerScore.innerText = computerScores
+            setTimeout(roundRestart,1000)
       } else if (
             box3.textContent === "O" &&
             box5.textContent === "O" &&
@@ -280,5 +384,15 @@ function checkWinner() {
       ) {
             winner = "Computer Wins!";
             gameStillOn = false;
+            computerScores+=1
+            computerScore.innerText = computerScores
+            setTimeout(roundRestart,1000)
+      }
+      else if(emptySquare.length===0){
+            winner = "its tie!";
+            gameStillOn = false;
+            tieScores+=1
+            tieScore.innerText = tieScores
+            setTimeout(roundRestart,1000)
       }
 }

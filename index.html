@@ -10,24 +10,34 @@
 
 <body>
 
-        <div class="createpopup">
+            <div class="createpopup">
                 <div class="element">
                         <div class="selectlevel">
-                                <div id="Easy" class="lvl lvl-1">Easy</div>
-                                <div id="Medium" class="lvl lvl-2">Medium</div>
-                                <div id="Hard" class="lvl lvl-3">Hard</div>
-                        </div>
-                </div>
+                                <div class="leveltext">Select Your Mode</div>
+                                <div class="lvlselection">
+                                        <div id="computerVs" class="lvl vslvl">VS Computer</div>
+                                        <div id="computerVs" class="lvl vslvl">VS Friend</div>
+                                </div>
+                                <div class="leveltext">Select Your Level</div>
+                                <div class="lvlselection">
+                                        <div id="Easy" class="lvl">Easy</div>
+                                        <div id="Medium" class="lvl">Medium</div>
+                                        <!-- <div id="Hard" class="lvl lvl-3">Hard</div> -->
         </div>
+        </div>
+        </div>
+        </div>
+
         <div class="game">
                 <div class="overallscore">
-
-                        <div class="playerscore">0</div>
-                        <div class="computerscore">0</div>
-                        <div class="resetgame">Reset</div>
+                        <div class="name">Tic Tac Toe</div>
+                        <div class="countUpdate">
+                                <div class="scoreCount"> Player Score - <span id="playerScore">0</span></div>
+                                <div class="scoreCount"> Tie - <span id="tieScore">0</span></div>
+                                <div class="scoreCount">Computer Score - <span id="computerScore">0</span></div>
+                        </div>
                 </div>
-                <div class="name">Tic Tac Toe</div>
-                <h2 id="Winner"></h2>
+                <h2>Winner - " <span id="Winner"></span> "</h2>
                 <div id="squares">
                         <div class="square" id="1"></div>
                         <div class="square" id="2"></div>
@@ -39,6 +49,7 @@
                         <div class="square" id="8"></div>
                         <div class="square" id="9"></div>
                 </div>
+                <div class="resetgame">Reset</div>
         </div>
 
         <script src="script.js"></script>
