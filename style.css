@@ -16,37 +16,37 @@ body {
 }
 
 .overallscore {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        color: black;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      color: black;
 }
 
-.countUpdate{
-        display: flex;
+.countUpdate {
+      display: flex;
 }
 
-.name{
-        font-size: 35px ;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        margin: 30px;
-        padding: 3px;
-        color: red;
-        border-bottom: 4px solid gold;
+.name {
+      font-size: 35px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      margin: 30px;
+      padding: 3px;
+      color: red;
+      border-bottom: 4px solid gold;
 }
 
-.scoreCount{
-        background-color: #bca0a0;
-        margin: 10px;
-        padding: 10px;
-        border-radius: 1ch;
-        padding: 10px 20px;
-        font-size: 23px;
+.scoreCount {
+      background-color: #bca0a0;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 1ch;
+      padding: 10px 20px;
+      font-size: 23px;
 }
 
 #squares {
@@ -54,7 +54,7 @@ body {
       width: 315px;
       display: flex;
       flex-wrap: wrap;
-      padding-bottom: 30PX;
+      padding-bottom: 30px;
       justify-content: center;
 }
 
@@ -79,9 +79,7 @@ body {
 
 .square:hover {
       background-color: rgb(209, 136, 136);
-
 }
-
 
 .selectlevel {
       display: flex;
@@ -157,24 +155,34 @@ body {
       padding-bottom: 50px;
 }
 
-
-
-@media (max-width: 720px){
-
-      .squares{
+@media (max-width: 720px) {
+      .square {
             height: 50px;
             width: 50px;
             font-size: 40px;
       }
 
-      .countUpdate{
+      #squares{
+            height: 160px;
+            width: 175px;
+      }
+
+      .resetgame{
+            width: 120px;
+      }
+
+      .countUpdate {
             flex-direction: column;
       }
-      .scoreCount{
-        background-color: #bca0a0;
-        padding: 10px;
-        border-radius: 1ch;
-        padding: 10px 20px;
-        font-size: 23px;
-}
+      .scoreCount {
+            background-color: #bca0a0;
+            padding: 10px;
+            border-radius: 1ch;
+            padding: 10px 20px;
+            font-size: 18px;
+      }
+
+      .name{
+            font-size: 25px;
+      }
 }
