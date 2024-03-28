@@ -15,12 +15,49 @@ let gameStillOn = true;
 let winner = "";
 let level = 0;
 let playerClick = 0;
+let vsPlayerGame = false;
 
 let gameBoard = [
-            ["", "", ""],
-            ["", "", ""],
-            ["", "", ""]
-      ];
+      ["", "", ""],
+      ["", "", ""],
+      ["", "", ""],
+];
+
+//------------------select levels--------------------------
+//-----------------Computer Opponent------------------------
+const vsComputer = document.getElementById("computerVs");
+vsComputer.addEventListener("click", () => {
+      const addText = document.getElementById("textSelectLevel");
+      addText.innerText = "Please select A level";
+});
+
+//-----------------Player Opponent------------------------
+
+const vsPlayer = document.getElementById("playerVs");
+vsPlayer.addEventListener("click", () => {
+      closePopup.style.display = "none";
+      playerVsPlayer();
+});
+function playerVsPlayer() {
+      vsPlayerGame = true;
+      square.forEach((elem) => {
+            elem.addEventListener("click", () => {
+                  if (gameStillOn === true) {
+                        if (!elem.textContent) {
+                              elem.textContent = playerText;
+                              checkWinner();
+                              if (playerText === "X") {
+                                    playerText = "O";
+                              } else {
+                                    playerText = "X";
+                              }
+                        }
+                        declareWinner.innerText = `${winner}`;
+                  }
+            });
+      });
+}
+
 //-------------------Computer Turn Easy-----------------------
 
 function computerTurn() {
@@ -71,9 +108,6 @@ function computerTurnMedium() {
       let playerChosenBox = "";
       //---------------------------------First Move-------------------------------------
 
-      
-      console.log(gameBoard)
-
       if (emptySquare.length >= 8) {
             if (cornerMove.includes(Number(playerClick))) {
                   if (box5.textContent === "") {
@@ -92,7 +126,6 @@ function computerTurnMedium() {
             }
             playerChosenBox = playerClick;
       }
-      console.log(playerChosenBox);
 
       //---------------------------------Second Move-------------------------------------
       if (emptySquare.length > 0 && emptySquare.length < 8) {
@@ -190,6 +223,7 @@ function levelTwo() {
 // }
 
 //-------------------------------------Reset-----------------------------------------//
+
 let resetGame = document.querySelector(".resetgame");
 resetGame.addEventListener(
       "click",
@@ -205,193 +239,328 @@ resetGame.addEventListener(
 
 //-----------------round compleate------------------
 
-function roundRestart(){
+function roundRestart() {
       square.forEach((elem) => {
             elem.textContent = "";
       });
       playerText = "X";
-            gameStillOn = true;
-            winner = "";
+      gameStillOn = true;
+      winner = "";
 }
 
 //-------------------------------------Winner-----------------------------------------
 
-let playerScore = document.getElementById("playerScore")
-let computerScore = document.getElementById("computerScore")
-let tieScore = document.getElementById("tieScore")
+let playerScore = document.getElementById("playerScore");
+let computerScore = document.getElementById("computerScore");
+let tieScore = document.getElementById("tieScore");
 
-playerScores = 0
-computerScores = 0
-tieScores = 0
+playerScores = 0;
+computerScores = 0;
+tieScores = 0;
 
 function checkWinner() {
-      let emptySquare = allSqure.filter((elem) => !elem.textContent)
+      let emptySquare = allSqure.filter((elem) => !elem.textContent);
       if (
             box1.textContent === "X" &&
             box2.textContent === "X" &&
             box3.textContent === "X"
       ) {
-            winner = "Player Wins!";
-            gameStillOn = false;
-            playerScores+=1
-            playerScore.innerText = playerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 1 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Player Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box4.textContent === "X" &&
             box5.textContent === "X" &&
             box6.textContent === "X"
       ) {
-            winner = "Player Wins!";
-            gameStillOn = false;
-            playerScores+=1
-            playerScore.innerText = playerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 1 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Player Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box7.textContent === "X" &&
             box8.textContent === "X" &&
             box9.textContent === "X"
       ) {
-            winner = "Player Wins!";
-            gameStillOn = false;
-            playerScores+=1
-            playerScore.innerText = playerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 1 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Player Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box1.textContent === "X" &&
             box4.textContent === "X" &&
             box7.textContent === "X"
       ) {
-            winner = "Player Wins!";
-            gameStillOn = false;
-            playerScores+=1
-            playerScore.innerText = playerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 1 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Player Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box2.textContent === "X" &&
             box5.textContent === "X" &&
             box8.textContent === "X"
       ) {
-            winner = "Player Wins!";
-            gameStillOn = false;
-            playerScores+=1
-            playerScore.innerText = playerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 1 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Player Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box3.textContent === "X" &&
             box6.textContent === "X" &&
             box9.textContent === "X"
       ) {
-            winner = "Player Wins!";
-            gameStillOn = false;
-            playerScores+=1
-            playerScore.innerText = playerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 1 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Player Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box1.textContent === "X" &&
             box5.textContent === "X" &&
             box9.textContent === "X"
       ) {
-            winner = "Player Wins!";
-            gameStillOn = false;
-            playerScores+=1
-            playerScore.innerText = playerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 1 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Player Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box3.textContent === "X" &&
             box5.textContent === "X" &&
             box7.textContent === "X"
       ) {
-            winner = "Player Wins!";
-            gameStillOn = false;
-            playerScores+=1
-            playerScore.innerText = playerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 1 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Player Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box1.textContent === "O" &&
             box2.textContent === "O" &&
             box3.textContent === "O"
       ) {
-            winner = "Computer Wins!";
-            gameStillOn = false;
-            computerScores+=1
-            computerScore.innerText = computerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 2 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Computer Wins!";
+                  gameStillOn = false;
+                  computerScores += 1;
+                  computerScore.innerText = computerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box4.textContent === "O" &&
             box5.textContent === "O" &&
             box6.textContent === "O"
       ) {
-            winner = "Computer Wins!";
-            gameStillOn = false;
-            computerScores+=1
-            computerScore.innerText = computerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 2 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Computer Wins!";
+                  gameStillOn = false;
+                  computerScores += 1;
+                  computerScore.innerText = computerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box7.textContent === "O" &&
             box8.textContent === "O" &&
             box9.textContent === "O"
       ) {
-            winner = "Computer Wins!";
-            gameStillOn = false;
-            computerScores+=1
-            computerScore.innerText = computerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 2 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Computer Wins!";
+                  gameStillOn = false;
+                  computerScores += 1;
+                  computerScore.innerText = computerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box1.textContent === "O" &&
             box4.textContent === "O" &&
             box7.textContent === "O"
       ) {
-            winner = "Computer Wins!";
-            gameStillOn = false;
-            computerScores+=1
-            computerScore.innerText = computerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 2 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Computer Wins!";
+                  gameStillOn = false;
+                  computerScores += 1;
+                  computerScore.innerText = computerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box2.textContent === "O" &&
             box5.textContent === "O" &&
             box8.textContent === "O"
       ) {
-            winner = "Computer Wins!";
-            gameStillOn = false;
-            computerScores+=1
-            computerScore.innerText = computerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 2 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Computer Wins!";
+                  gameStillOn = false;
+                  computerScores += 1;
+                  computerScore.innerText = computerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box3.textContent === "O" &&
             box6.textContent === "O" &&
             box9.textContent === "O"
       ) {
-            winner = "Computer Wins!";
-            gameStillOn = false;
-            computerScores+=1
-            computerScore.innerText = computerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 2 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Computer Wins!";
+                  gameStillOn = false;
+                  computerScores += 1;
+                  computerScore.innerText = computerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box1.textContent === "O" &&
             box5.textContent === "O" &&
             box9.textContent === "O"
       ) {
-            winner = "Computer Wins!";
-            gameStillOn = false;
-            computerScores+=1
-            computerScore.innerText = computerScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 2 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Computer Wins!";
+                  gameStillOn = false;
+                  computerScores += 1;
+                  computerScore.innerText = computerScores;
+                  setTimeout(roundRestart, 2000);
+            }
       } else if (
             box3.textContent === "O" &&
             box5.textContent === "O" &&
             box7.textContent === "O"
       ) {
-            winner = "Computer Wins!";
-            gameStillOn = false;
-            computerScores+=1
-            computerScore.innerText = computerScores
-            setTimeout(roundRestart,2000)
-      }
-      else if(emptySquare.length===0){
-            winner = "its tie!";
-            gameStillOn = false;
-            tieScores+=1
-            tieScore.innerText = tieScores
-            setTimeout(roundRestart,2000)
+            if (vsPlayerGame === true) {
+                  winner = "Player 2 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "Computer Wins!";
+                  gameStillOn = false;
+                  computerScores += 1;
+                  computerScore.innerText = computerScores;
+                  setTimeout(roundRestart, 2000);
+            }
+      } else if (emptySquare.length === 0) {
+            if (vsPlayerGame === true) {
+                  winner = "Player 2 Wins!";
+                  gameStillOn = false;
+                  playerScores += 1;
+                  playerScore.innerText = playerScores;
+                  setTimeout(roundRestart, 2000);
+            } else {
+                  winner = "its tie!";
+                  gameStillOn = false;
+                  tieScores += 1;
+                  tieScore.innerText = tieScores;
+                  setTimeout(roundRestart, 2000);
+            }
       }
 }

@@ -151,8 +151,12 @@ body {
 
 .lvlselection {
       display: flex;
-      margin: 30px;
-      padding-bottom: 50px;
+      margin: 20px;
+      padding-bottom: 20px;
+}
+
+#textSelectLevel{
+      color: red;
 }
 
 @media (max-width: 720px) {
@@ -185,4 +189,23 @@ body {
       .name{
             font-size: 25px;
       }
+
+      .selectlevel{
+            width: 80vw;
+            height: 70vh;
+      }
+
+      .leveltext{
+            font-size: 20px;
+      }
+
+      .vslvl{
+            width: 100px;
+      }
+
+      .lvl{
+            height: 40px;
+            font-size: 16px;
+      }
 }
+
