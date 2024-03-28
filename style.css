@@ -41,11 +41,11 @@ body {
 }
 
 .scoreCount{
-        background-color: #dcc1c1;
+        background-color: #bca0a0;
         margin: 10px;
         padding: 10px;
         border-radius: 1ch;
-        padding: 20px;
+        padding: 10px 20px;
         font-size: 23px;
 }
 
@@ -54,7 +54,7 @@ body {
       width: 315px;
       display: flex;
       flex-wrap: wrap;
-      padding: 50px;
+      padding-bottom: 30PX;
       justify-content: center;
 }
 
@@ -155,4 +155,26 @@ body {
       display: flex;
       margin: 30px;
       padding-bottom: 50px;
+}
+
+
+
+@media (max-width: 720px){
+
+      .squares{
+            height: 50px;
+            width: 50px;
+            font-size: 40px;
+      }
+
+      .countUpdate{
+            flex-direction: column;
+      }
+      .scoreCount{
+        background-color: #bca0a0;
+        padding: 10px;
+        border-radius: 1ch;
+        padding: 10px 20px;
+        font-size: 23px;
+}
 }

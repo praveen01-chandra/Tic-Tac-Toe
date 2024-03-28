@@ -235,8 +235,7 @@ function checkWinner() {
             gameStillOn = false;
             playerScores+=1
             playerScore.innerText = playerScores
-            setTimeout(roundRestart,1000)
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box4.textContent === "X" &&
             box5.textContent === "X" &&
@@ -246,7 +245,7 @@ function checkWinner() {
             gameStillOn = false;
             playerScores+=1
             playerScore.innerText = playerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box7.textContent === "X" &&
             box8.textContent === "X" &&
@@ -256,7 +255,7 @@ function checkWinner() {
             gameStillOn = false;
             playerScores+=1
             playerScore.innerText = playerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box1.textContent === "X" &&
             box4.textContent === "X" &&
@@ -266,7 +265,7 @@ function checkWinner() {
             gameStillOn = false;
             playerScores+=1
             playerScore.innerText = playerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box2.textContent === "X" &&
             box5.textContent === "X" &&
@@ -276,7 +275,7 @@ function checkWinner() {
             gameStillOn = false;
             playerScores+=1
             playerScore.innerText = playerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box3.textContent === "X" &&
             box6.textContent === "X" &&
@@ -286,7 +285,7 @@ function checkWinner() {
             gameStillOn = false;
             playerScores+=1
             playerScore.innerText = playerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box1.textContent === "X" &&
             box5.textContent === "X" &&
@@ -296,7 +295,7 @@ function checkWinner() {
             gameStillOn = false;
             playerScores+=1
             playerScore.innerText = playerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box3.textContent === "X" &&
             box5.textContent === "X" &&
@@ -306,7 +305,7 @@ function checkWinner() {
             gameStillOn = false;
             playerScores+=1
             playerScore.innerText = playerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box1.textContent === "O" &&
             box2.textContent === "O" &&
@@ -316,7 +315,7 @@ function checkWinner() {
             gameStillOn = false;
             computerScores+=1
             computerScore.innerText = computerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box4.textContent === "O" &&
             box5.textContent === "O" &&
@@ -326,7 +325,7 @@ function checkWinner() {
             gameStillOn = false;
             computerScores+=1
             computerScore.innerText = computerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box7.textContent === "O" &&
             box8.textContent === "O" &&
@@ -336,7 +335,7 @@ function checkWinner() {
             gameStillOn = false;
             computerScores+=1
             computerScore.innerText = computerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box1.textContent === "O" &&
             box4.textContent === "O" &&
@@ -346,7 +345,7 @@ function checkWinner() {
             gameStillOn = false;
             computerScores+=1
             computerScore.innerText = computerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box2.textContent === "O" &&
             box5.textContent === "O" &&
@@ -356,7 +355,7 @@ function checkWinner() {
             gameStillOn = false;
             computerScores+=1
             computerScore.innerText = computerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box3.textContent === "O" &&
             box6.textContent === "O" &&
@@ -366,7 +365,7 @@ function checkWinner() {
             gameStillOn = false;
             computerScores+=1
             computerScore.innerText = computerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box1.textContent === "O" &&
             box5.textContent === "O" &&
@@ -376,7 +375,7 @@ function checkWinner() {
             gameStillOn = false;
             computerScores+=1
             computerScore.innerText = computerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       } else if (
             box3.textContent === "O" &&
             box5.textContent === "O" &&
@@ -386,13 +385,13 @@ function checkWinner() {
             gameStillOn = false;
             computerScores+=1
             computerScore.innerText = computerScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       }
       else if(emptySquare.length===0){
             winner = "its tie!";
             gameStillOn = false;
             tieScores+=1
             tieScore.innerText = tieScores
-            setTimeout(roundRestart,1000)
+            setTimeout(roundRestart,2000)
       }
 }
