@@ -17,12 +17,6 @@ let level = 0;
 let playerClick = 0;
 let vsPlayerGame = false;
 
-let gameBoard = [
-      ["", "", ""],
-      ["", "", ""],
-      ["", "", ""],
-];
-
 //------------------select levels--------------------------
 //-----------------Computer Opponent------------------------
 const vsComputer = document.getElementById("computerVs");
@@ -38,6 +32,7 @@ vsPlayer.addEventListener("click", () => {
       closePopup.style.display = "none";
       playerVsPlayer();
 });
+
 function playerVsPlayer() {
       vsPlayerGame = true;
       square.forEach((elem) => {
@@ -70,6 +65,7 @@ function computerTurn() {
 }
 
 //-------------------Computer Turn Medium-----------------------
+
 
 function computerTurnMedium() {
       const emptySquare = allSqure.filter((elem) => !elem.textContent);
